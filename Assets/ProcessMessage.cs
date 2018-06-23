@@ -142,8 +142,8 @@ public class ProcessMessage : MonoBehaviour
     public static IEnumerator changeMapType()
     {
         Debug.Log("Changemaptype");
-        GameObject map = GameObject.Find("Map");
-        map.SendMessage("ChangeMapType");
+        GameObject map = GameObject.Find("NewMap");
+        map.GetComponent<TestMap>().ChangeType();
         yield return null;
     }
 }

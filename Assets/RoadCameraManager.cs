@@ -52,8 +52,6 @@ public class RoadCameraManager : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == TAG && !isSent)
                 {
-                    //hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                    isRaycasting = true;
                     isSent = true;
                     if (socket != null)
                     {
@@ -61,13 +59,11 @@ public class RoadCameraManager : MonoBehaviour
                         socket.SendData(Constant.TOKEN_BEGIN_URL + URL + Constant.TOKEN_END);
                     }
                 }
-                else
+                else if (hit.collider.gameObject.tag != TAG)
                 {
-                    isRaycasting = false;
+                    isSent = false;
                 }
-
-            }
-            if (!isRaycasting)
+            } else
             {
                 isSent = false;
             }
